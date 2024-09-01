@@ -43,6 +43,11 @@ body {
   height: 40px;
   display: inline-block;
   border-bottom: 2px solid white;
+  color: white;
+  text-transform: uppercase;
+  font-size: 30px;
+  text-align: center;
+  font-family: sans-serif;
 }
 .container--keyboard {
   width: 600px;
@@ -54,6 +59,17 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+}
+.container--keyboard .selectedLetter {
+  opacity: 0.6;
+  border: 2px solid black;
+  cursor: default;
+}
+.container--keyboard .correctChoice {
+  background: rgb(59, 176, 59);
+}
+.container--keyboard .wrongChoice {
+  background: rgb(220, 36, 36);
 }
 
 .btns {
@@ -72,9 +88,4 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  transition: 0.5s;
-}
-.btns:hover {
-  background: white;
-  color: black;
 }

@@ -41,6 +41,11 @@ body {
         height: 40px;
         display: inline-block;
         border-bottom: 2px solid white;
+        color: white;
+        text-transform: uppercase;
+        font-size: 30px;
+        text-align: center;
+        font-family: sans-serif;
       }
     }
   }
@@ -54,6 +59,19 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
+    .selectedLetter{
+      opacity: .6;
+      border: 2px solid black;
+      cursor: default;
+    }
+
+    .correctChoice {
+      background: rgb(59, 176, 59);
+    }
+
+    .wrongChoice {
+      background: rgb(220, 36, 36);
+    }
   }
 }
 
@@ -71,10 +89,4 @@ body {
   font-family: sans-serif;
   cursor: pointer;
   user-select: none;
-  transition: 0.5s;
-
-  &:hover {
-    background: white;
-    color: black;
-  }
 }

@@ -27,25 +27,55 @@ const alphabetLetters = [
   "z",
 ];
 
-const selectedWord = "rainbow"
+const selectedWord = "rainbow";
+const textArr = [...selectedWord];
+let wrongGuess = 0;
+let correctGuess = 0;
 
-function giveBtns() {
-    const arr = [];
-    for(var i = 0; i < alphabetLetters.length; i++) {
-        arr.push(`<span class="btns">${alphabetLetters[i]}</span>`)
-    }
-    
-    return arr.join("");
+alphabetLetters.forEach((e, i) => {
+  const btn = `<span class="btns btn__num__${i}" btnValue="${e}">${e}</span>`;
+  $(".container--keyboard").append(btn);
+  $(`.btn__num__${i}`).click((e) => {
+    checkTheLetter(e.target.getAttribute("btnValue"), `btn__num__${i}`);
+  });
+});
+
+textArr.forEach((e, i) => {
+  const textPart = `<span class="wordPieces letter__num__${i}"></span>`;
+  $(".word").append(textPart);
+});
+
+function checkTheLetter(letter, btnClass) {
+  $(`.${btnClass}`).off("click");
+  if (textArr.includes(letter)) {
+    correctLetter(letter, btnClass);
+  } else {
+    wrongLetter(btnClass);
+  }
+
+  checkGameStatus();
 }
 
-function giveTextPieces() {
-    const arr = [];
-    for(var i = 0; i < selectedWord.length; i++) {
-        arr.push(`<span class="wordPieces"></span>`)
-    }
-
-    return arr.join("");
+function correctLetter(letter, btnClass) {
+  const letterIndex = textArr.indexOf(letter);
+  $(`.${btnClass}`).addClass("correctChoice selectedLetter");
+  $(`.${btnClass}`).off("click");
+  $(`.letter__num__${letterIndex}`).text(letter);
+  correctGuess++;
 }
 
-$(".container--keyboard").html(giveBtns)
-$(".word").html(giveTextPieces)
+function wrongLetter(btnClass) {
+  $(`.${btnClass}`).addClass("wrongChoice selectedLetter");
+  wrongGuess++;
+  $(`.hangman div`).text(wrongGuess);
+}
+
+function checkGameStatus() {
+  if (correctGuess === selectedWord.length) {
+    console.log("we have winner");
+  }
+
+  if(wrongGuess === 7) {
+    console.log("you loosed")
+  }
+}
