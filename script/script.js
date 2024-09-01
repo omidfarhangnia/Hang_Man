@@ -75,7 +75,7 @@ function checkGameStatus() {
     console.log("we have winner");
   }
 
-  if(wrongGuess === 7) {
-    console.log("you loosed")
+  if (wrongGuess === 7) {
+    console.log("you loosed");
   }
 }

@@ -2,90 +2,124 @@ body {
   margin: 0;
 }
 
-.container {
+.page__bg {
   width: 100vw;
   height: 100vh;
-  background: rgb(74, 74, 74);
+  background: url(../images/black_board_image.jpg) no-repeat;
+  background-size: cover;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 40px;
 }
-.container--hangman {
-  width: 400px;
-  height: 400px;
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.container--hangman .hangman {
-  width: 70%;
-  height: 60%;
-  border: 2px solid white;
-  border-top: 0px;
-  position: relative;
-}
-.container--hangman .word {
+.page__bg .page__container {
   width: 90%;
-  height: 30%;
-  border: 2px solid white;
-  border-bottom: 0px;
+  height: 60%;
+  max-width: 1000px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+}
+.page__bg .page__container--header {
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 15px rgb(148, 148, 148);
+  font-size: 2rem;
+  text-transform: capitalize;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+}
+.page__bg .page__container .btns__container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  width: 100%;
+  gap: 1rem;
 }
-.container--hangman .word .wordPieces {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-  border-bottom: 2px solid white;
+.page__bg .page__container .btns__container--btns {
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  padding: 0.5rem;
+  border: 1px solid white;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  border-radius: 200px;
+  cursor: pointer;
+}
+.page__bg .page__container .btns__container--btns:hover {
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.5333333333);
+}
+.page__bg .page__container .btns__container--btns a {
+  text-decoration: none;
   color: white;
   text-transform: uppercase;
-  font-size: 30px;
-  text-align: center;
-  font-family: sans-serif;
+  font-family: "Roboto Mono";
 }
-.container--keyboard {
-  width: 600px;
-  height: 300px;
-  background: black;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 30px;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-}
-.container--keyboard .selectedLetter {
-  opacity: 0.6;
-  border: 2px solid black;
+.page__bg .page__container .btns__container .disable--btn {
+  position: relative;
+  border: 1px solid #828282;
+  box-shadow: 0 0 15px #828282, 0 0 15px #828282 inset;
   cursor: default;
 }
-.container--keyboard .correctChoice {
-  background: rgb(59, 176, 59);
+.page__bg .page__container .btns__container .disable--btn a {
+  opacity: 0.5;
 }
-.container--keyboard .wrongChoice {
-  background: rgb(220, 36, 36);
+.page__bg .page__container .btns__container .disable--btn:hover {
+  background: none;
+}
+.page__bg .page__container .btns__container .disable--btn::after {
+  content: "please select group first";
+  position: absolute;
+  font-size: 15px;
+  height: 50%;
+  color: white;
+  text-transform: uppercase;
+  width: 103%;
+  border-radius: 50px;
+  left: -1%;
+  background: red;
+  font-family: sans-serif;
+  top: 25%;
+  rotate: -3.5deg;
 }
 
-.btns {
-  width: 30px;
-  height: 30px;
-  color: white;
-  border: 2px solid white;
-  padding: 5px;
-  text-align: center;
-  align-content: center;
-  font-size: 25px;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+@media (min-width: 640px) {
+  .page__bg .page__container {
+    padding: 2rem;
+    height: auto;
+    padding: 5rem 2rem;
+    flex-direction: row;
+  }
+  .page__bg .page__container--header {
+    font-size: 35;
+    width: 50%;
+  }
+  .page__bg .page__container .btns__container {
+    width: 50%;
+  }
+  .page__bg .page__container .btns__container--btns {
+    font-size: 25px;
+  }
+}
+@media (min-width: 900px) {
+  :root {
+    font-size: 12px;
+  }
+  .page__bg .page__container {
+    height: auto;
+  }
+  .page__bg .page__container--header {
+    font-size: 40px;
+    max-width: 500px;
+  }
+  .page__bg .page__container .btns__container {
+    max-width: 500px;
+  }
 }
