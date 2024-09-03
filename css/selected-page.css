@@ -1,0 +1,52 @@
+.page__bg {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/black_board_image.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page__bg .word__group__container {
+  width: 90%;
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+.page__bg .word__group__container .group--btns {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background: transparent;
+  font-size: 20px;
+  padding: 1rem 0;
+  letter-spacing: 13px;
+  width: 90%;
+  border: none;
+  color: white;
+  text-shadow: 0 0 15px rgb(148, 148, 148);
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  cursor: pointer;
+}
+.page__bg .word__group__container .group--btns:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 650px) {
+  .page__bg .word__group__container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .page__bg .word__group__container .group--btns {
+    width: 40%;
+    letter-spacing: 5px;
+    font-size: 20px;
+  }
+}
