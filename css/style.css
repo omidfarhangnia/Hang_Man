@@ -1,0 +1,232 @@
+:root {
+  --btn-size: 25px;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/black_board_image.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home .box {
+  width: 90%;
+  height: 60%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.home .box--header {
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 15px rgb(148, 148, 148);
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-family: "Roboto Mono";
+  font-weight: 400;
+}
+.home .box--btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+.home .box--btns .btns {
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  padding: 0.5rem;
+  border: 1px solid white;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  border-radius: 200px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Roboto Mono";
+}
+.home .box--btns .btns:hover {
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.5333333333);
+}
+.home .box--btns .btns a {
+  text-decoration: none;
+  color: white;
+}
+.home .box--btns .disable--btn {
+  position: relative;
+  border: 1px solid #828282;
+  box-shadow: 0 0 15px #828282, 0 0 15px #828282 inset;
+  cursor: default;
+}
+.home .box--btns .disable--btn a {
+  opacity: 0.5;
+}
+.home .box--btns .disable--btn:hover {
+  background: none;
+}
+.home .box--btns .disable--btn::after {
+  content: "please select group first";
+  position: absolute;
+  font-size: 10px;
+  line-height: 20px;
+  height: 50%;
+  color: white;
+  text-transform: uppercase;
+  width: 103%;
+  border-radius: 50px;
+  left: -1%;
+  background: red;
+  font-family: sans-serif;
+  top: 25%;
+  rotate: -3.5deg;
+}
+
+@media (min-width: 750px) {
+  .home .box {
+    height: auto;
+    padding: 5rem 2rem;
+    flex-direction: row;
+  }
+  .home .box--header {
+    font-size: 35px;
+    width: 50%;
+  }
+  .home .box--btns {
+    width: 50%;
+  }
+  .home .box--btns .btns {
+    font-size: 22px;
+  }
+  .home .box .disable--btn::after {
+    font-size: 15px;
+  }
+}
+@media (min-width: 900px) {
+  .home .box--header {
+    font-size: 45px;
+    max-width: 500px;
+  }
+  .home .box--btns {
+    max-width: 500px;
+  }
+  .home .box--btns .btns {
+    font-size: 26px;
+  }
+}
+.selectGroup {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/black_board_image.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selectGroup--container {
+  max-width: 1200px;
+  width: 90%;
+  padding: 4rem 0;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  border: 2px solid white;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+}
+.selectGroup--container .group--btns {
+  max-width: 400px;
+  width: 70%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background: transparent;
+  padding: 10px 0;
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: white;
+  text-shadow: 0 0 15px rgb(148, 148, 148);
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  cursor: pointer;
+}
+.selectGroup--container .group--btns:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 650px) {
+  .selectGroup--container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .selectGroup--container .group--btns {
+    width: 40%;
+    letter-spacing: 10px;
+    font-size: 20px;
+  }
+}
+.game {
+  width: 100vw;
+  height: 100vh;
+  background: url(../images/black_board_image.jpg) no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.game .box {
+  width: 90%;
+  height: 80%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 50px;
+  box-shadow: 0 0 15px white, 0 0 15px white inset;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+.game .box .keyboard {
+  width: 90%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.game .box .keyboard .btns {
+  display: inline-block;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  text-align: center;
+  align-content: center;
+  font-family: "Roboto Mono";
+  text-transform: uppercase;
+  font-size: var(--btn-size);
+  color: white;
+  border: 1px solid white;
+}
+
+.none {
+  display: none;
+}
