@@ -66,7 +66,6 @@ export const wordGroups = [
   {
     groupName: "foods",
     icon: "fa-solid fa-bowl-food",
-
     groupMember: [
       "cookie",
       "toast",

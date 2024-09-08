@@ -4,26 +4,43 @@ let selectedWord = "",
   selectedWordArr,
   wrongGuess = 0,
   correctGuess = 0,
+  groupTarget = null,
   newSelectedGroup = {
     name: "",
     member: [],
   };
 
 $(".select--group").click(function () {
-  changePage("home", "selectGroup");
+  changePage();
 });
 
-function changePage(firstClass, secondClass) {
-  $("." + firstClass).toggleClass("none");
-  $("." + secondClass).toggleClass("none");
+$(".playAgain").click(function () {
+  changePage("result", "game");
+  playGame();
+  console.log("hello there");
+});
+
+$(".select--groupAgain").click(function () {
+  groupTarget = "result";
+  changePage();
+});
+
+function changePage(firstClass = "home", secondClass = "selectGroup") {
+  if (groupTarget !== null && firstClass === "home") {
+    $("." + groupTarget).toggleClass("none");
+    $(".selectGroup").toggleClass("none");
+  } else {
+    $("." + firstClass).toggleClass("none");
+    $("." + secondClass).toggleClass("none");
+  }
 }
 
 function playGame() {
-  changePage("game", "home");
   chooseWord();
   wrongGuess = 0;
   correctGuess = 0;
   putLetterInKeyword();
+  $(".mistakes").addClass("none");
 }
 
 function chooseWord() {
@@ -33,6 +50,9 @@ function chooseWord() {
 }
 
 function putLetterInKeyword() {
+  $(".keyboard").empty();
+  $(".word").empty();
+
   alphabetLetters.forEach((e, i) => {
     const btn = `<span class="btns btn__num__${i}" btnValue="${e}">${e}</span>`;
     $(".keyboard").append(btn);
@@ -82,17 +102,50 @@ function giveLetterIndex(letter) {
 function wrongLetter(btnClass) {
   $(`.${btnClass}`).addClass("wrongChoice selectedLetter");
   wrongGuess++;
+  $(`.hangman--mistake${wrongGuess}`).removeClass("none");
   $(`.hangman div`).text(wrongGuess);
 }
 
 function checkGameStatus() {
   if (correctGuess === selectedWord.length) {
-    console.log("we have winner");
+    changePage("game", "result");
+    showResult("won");
+    playParty();
   }
 
   if (wrongGuess === 7) {
-    console.log("you loosed");
+    changePage("game", "result");
+    showResult("loose");
   }
+}
+
+function showResult(status) {
+  const message = status === "won" ? "won" : "loosed";
+
+  $(".result--status").text(message);
+  $(".played--word").text(selectedWord);
+}
+
+function playParty() {
+  const container = $(".colored--paper--container");
+  container.empty();
+
+  for (var i = 0; i < 200; i++) {
+    const positonX = Math.floor(Math.random() * 100);
+    const positonY = Math.floor(Math.random() * 1000);
+    const color = Math.floor(Math.random() * 16777215).toString(16);
+    const span = `<span style="left: ${positonX}%; background: #${color}; transform: translateY(${positonY}px);" class="colored--paper"></span>`;
+    container.append(span);
+  }
+
+  container.animate(
+    {
+      top: "1000px",
+    },
+    3000, function() {
+      container.css("top", "-1100px")
+    }
+  );
 }
 
 function activePlayBtn() {
@@ -100,7 +153,10 @@ function activePlayBtn() {
   if (newSelectedGroup.name !== "") {
     playBtn.removeClass("disable--btn");
     playBtn.removeAttr("disabled", "false");
-    playBtn.on("click", playGame);
+    playBtn.on("click", function () {
+      changePage("game", "home");
+      playGame();
+    });
   }
 }
 
@@ -110,7 +166,7 @@ wordGroups.forEach((member, i) => {
   $(`.group--btn--${i}`).click(() => {
     newSelectedGroup.name = member.groupName;
     newSelectedGroup.member = member.groupMember;
-    changePage("home", "selectGroup");
+    changePage();
     activePlayBtn();
   });
 });
