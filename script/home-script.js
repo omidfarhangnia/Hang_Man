@@ -27,7 +27,7 @@ function playGame() {
 }
 
 function chooseWord() {
-  const randomId = Math.floor(Math.random() * 10) + 1;
+  const randomId = Math.floor(Math.random() * 10);
   selectedWord = newSelectedGroup.member[randomId];
   selectedWordArr = [...selectedWord];
 }
@@ -41,7 +41,7 @@ function putLetterInKeyword() {
     });
   });
 
-  textArr.forEach((e, i) => {
+  selectedWordArr.forEach((e, i) => {
     const textPart = `<span class="wordPieces letter__num__${i}"></span>`;
     $(".word").append(textPart);
   });
@@ -59,11 +59,24 @@ function checkTheLetter(letter, btnClass) {
 }
 
 function correctLetter(letter, btnClass) {
-  const letterIndex = textArr.indexOf(letter);
+  // const letterIndex = selectedWordArr.indexOf(letter);
+  const letterIndex = giveLetterIndex(letter);
+  for (var i = 0; i < letterIndex.length; i++) {
+    $(`.letter__num__${letterIndex[i]}`).text(letter);
+    correctGuess++;
+  }
   $(`.${btnClass}`).addClass("correctChoice selectedLetter");
   $(`.${btnClass}`).off("click");
-  $(`.letter__num__${letterIndex}`).text(letter);
-  correctGuess++;
+}
+
+function giveLetterIndex(letter) {
+  const foundedIndexes = [];
+
+  for (var i = 0; i < selectedWord.length; i++) {
+    if (selectedWord[i] === letter) foundedIndexes.push(i);
+  }
+
+  return foundedIndexes;
 }
 
 function wrongLetter(btnClass) {
