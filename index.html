@@ -17,10 +17,9 @@
       rel="stylesheet"
     />
     <script
-      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-      crossorigin="anonymous"
-    ></script>
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="home">
@@ -51,19 +50,30 @@
             <span class="hangman--line1 lines"></span>
             <span class="hangman--line2 lines"></span>
             <span class="hangman--line3 lines"></span>
-            <span class="hangman--mistake1"></span>
-            <span class="hangman--mistake2"></span>
-            <span class="hangman--mistake3"></span>
-            <span class="hangman--mistake4"></span>
-            <span class="hangman--mistake5"></span>
-            <span class="hangman--mistake6"></span>
-            <span class="hangman--mistake7"></span>
+            <span class="mistakes hangman--mistake1 none"></span>
+            <span class="mistakes hangman--mistake2 none"></span>
+            <span class="mistakes hangman--mistake3 none"></span>
+            <span class="mistakes hangman--mistake4 none"></span>
+            <span class="mistakes hangman--mistake5 none"></span>
+            <span class="mistakes hangman--mistake6 none"></span>
+            <span class="mistakes hangman--mistake7 none"></span>
           </div>
           <div class="word"></div>
         </div>
         <div class="keyboard"></div>
       </div>
     </div>
+    <div class="result none">
+      <div class="box">
+        <h2 class="box--header">you <span class="result--status"></span></h2>
+        <p class="box--message">
+          the word was : <span class="played--word"></span>
+        </p>
+        <button class="box--btns playAgain">play again</button>
+        <button class="box--btns select--groupAgain">select group</button>
+      </div>
+    </div>
+    <div class="colored--paper--container"></div>
     <script type="module" src="./script/data.js"></script>
     <script type="module" src="./script/home-script.js"></script>
   </body>
